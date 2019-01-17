@@ -16,18 +16,23 @@ export default {
     };
   },
   computed: {
-    ...mapState({
-      isShow: state => state.footerStatus.showFooter
-    }),
+    // ...mapState({
+    //   isShow: state => state.footerStatus.showFooter,
+    //   num: state => state.footerStatus.changableNum,
+    // }),
     ...mapGetters('footerStatus',{
-      num:'getChangableNum'
+      num:'getChangableNum',
+      isShow:'isShow',
     })
   },
   created(){
     
   },
   methods:{
-    ...mapActions('footerStatus',['getNewNum'])
+    // ...mapActions('footerStatus',['getNewNum'])
+    getNewNum(num){
+      this.$store.dispatch('footerStatus/getNewNum',num)
+    }
   },
   watch: {
     $route(to, from) {
